@@ -1,4 +1,4 @@
-package com.projeto.tarefas;
+package java.com.projeto.tarefas;
 
 public class Tarefa {
     
