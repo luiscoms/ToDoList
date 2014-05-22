@@ -1,25 +1,66 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>To-Do List</title>
-    </h:head>
-    <h:body>
-        <h2 align="center">Lista de Tarefas</h2>
-        
-        <h:form>
-            <h:panelGrid>
-                <h:selectManyCheckbox>
-                    <f:selectItem></f:selectItem>
-                    <p:inputText></p:inputText>
-                </h:selectManyCheckbox>
-                <h:inputText></h:inputText>
-            </h:panelGrid>
-        </h:form>
-        
-    </h:body>
-</html>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style>
+	.ui-widget{font-size: 12px;}
+	</style>
+</h:head>
+<h:body>
 
+<p:menubar>
+    <f:facet name="options">
+        <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+    </f:facet>
+</p:menubar>
+
+<p:layout style="min-width:400px;min-height:200px;">
+    <p:layoutUnit position="west" minSize="100">
+        <p:panel header="Nova Trefa">
+        	<h:form>
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Título: *" />
+                    <p:inputText value="" required="true" label="Tit"/>
+
+                    <h:outputText value="Descrição: " />
+                    <p:inputTextarea value="" label="Desc"/>
+
+                    <p:outputLabel for="dataLimite" value="Data Limite:" />
+ 				    <p:calendar id="dataLimite" pattern="dd-MM-yyyy" mask="true" />
+
+                    <h:outputText value="Concluída: " />
+                    <h:selectBooleanCheckbox value="" />
+                </h:panelGrid>
+
+                <h:button></h:button>
+            </h:form>
+           </p:panel>
+    </p:layoutUnit>
+
+    <p:layoutUnit position="center">
+        <h3>Change Event</h3>
+
+	    <p:tabView>
+	        <p:tab title="Godfather Part I">
+	            <h:panelGrid columns="2" cellpadding="10">
+	                <h:outputText value="The story begins as Don Vito Corleone..." />
+	            </h:panelGrid>
+	        </p:tab>
+	        <p:tab title="Godfather Part II" closable="true">
+	            <h:panelGrid columns="2" cellpadding="10">
+	                <h:outputText value="Francis Ford Coppola's legendary..." />
+	            </h:panelGrid>
+	        </p:tab>
+	        <p:tab title="Godfather Part III" closable="true">
+	            <h:panelGrid columns="2" cellpadding="10">
+	                <h:outputText value="After a break of more than 15 years..." />
+	            </h:panelGrid>
+	        </p:tab>
+	    </p:tabView>
+    </p:layoutUnit>
+</p:layout>
+
+</h:body>
+</html>

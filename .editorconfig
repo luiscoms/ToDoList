@@ -1,0 +1,12 @@
+; EditorConfig file format for defining coding styles
+; enabling editors to adhere to the project defined style.
+; Visit http://EditorConfig.org for more details.
+
+root = true
+
+; All files should use spaces unless specified otherwise
+[*]
+indent_style = tab
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
