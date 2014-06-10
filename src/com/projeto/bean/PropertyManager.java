@@ -1,6 +1,7 @@
 package com.projeto.bean;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -20,9 +21,10 @@ public class PropertyManager {
     private Property selectedProp;
     private String key;
     private String value;
+    private Date data;
 
-    public void save() {
-        ejb.put(key, value);
+	public void save() {
+        ejb.put(data, key, value);
     }
 
     public void clear() {
@@ -56,4 +58,12 @@ public class PropertyManager {
     public void setValue(String value) {
         this.value = value;
     }
+
+    public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
 }

@@ -11,13 +11,16 @@
 	<h:form id="jsfexample">
 		<p:panelGrid columns="2">
 			<f:facet name="header">  
-				Basic PanelGrid  
+				Nova Tarefa  
 		   </f:facet>
+			<h:outputLabel for="data" value="Enter Date" />
+			<p:calendar id="data" value="#{manager.data}" pattern="dd-MM-yyyy" mask="true" />
+
 			<h:outputLabel for="key" value="Enter key" />
 			<p:inputText id="key" value="#{manager.key}" />
 
 			<h:outputLabel for="value" value="Enter value" />
-			<p:inputText id="value" value="#{manager.value}" />
+			<p:inputText id="value" value="#{manager.value}" required="true" requiredMessage="Ha"/>
 
 			<p:commandButton action="#{manager.save}" update="mydata"
 				value="Save" icon="ui-icon-check" style="margin:0" />
@@ -32,6 +35,10 @@
 		<p:dataTable value="#{manager.cacheList}" var="item" id="mydata"
 			selectionMode="single" selection="#{manager.selectedProp}"
 			rowKey="#{item.key}">
+			<p:column>
+				<f:facet name="header">Data</f:facet>
+				<h:outputText value="#{item.data}" />
+			</p:column>
 			<p:column>
 				<f:facet name="header">Key</f:facet>
 				<h:outputText value="#{item.key}" />

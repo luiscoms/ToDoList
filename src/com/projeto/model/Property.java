@@ -1,9 +1,11 @@
 package com.projeto.model;
 
+import java.util.Date;
+
 public class Property {
 	@Override
 	public String toString() {
-		return "Property [key=" + key + ", value=" + value + "]";
+		return "Property [date=" + data + ", key=" + key + ", value=" + value + "]";
 	}
 
 	private String key;
@@ -25,4 +27,15 @@ public class Property {
 	}
 
 	private String value;
+	
+
+	private Date data;
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
 }

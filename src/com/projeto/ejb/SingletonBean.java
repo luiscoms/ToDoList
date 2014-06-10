@@ -1,6 +1,7 @@
 package com.projeto.ejb;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -24,10 +25,11 @@ public class SingletonBean {
 		this.cache.remove(prop);
 	}
 
-	public void put(String key, String value) {
+	public void put(Date data, String key, String value) {
 		Property p = new Property();
 		p.setKey(key);
 		p.setValue(value);
+		p.setData(data);
 
 		this.cache.add(p);
 	}
