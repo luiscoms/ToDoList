@@ -3,23 +3,151 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Facelet Title</title>
-        <h:outputStylesheet library="css" name="login.css" />
-    </h:head>
-    <h:body>
-        <div class="login">
-            <div class="components">
-            <h:form id="frmLogin">
-                <p:outputLabel for="username" value="Usuário" />
-                <p:inputText id="username" value="#{login.userName}" /> <br />
-                <p:outputLabel for="password" value="Senha" />
-                <p:inputText id="password" value="#{login.password}"/> <br />
-                <p:commandButton id="btnLogar" value="Entrar" action="#{login.logar}"/>
-            </h:form>
-            </div>
-        </div>
-    </h:body>
-</html>
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">    
 
+  <h:head>    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Projeto TO DO LIST</title>
+
+    <!-- Styles -->
+    <h:outputStylesheet library="css" name="bootstrap.css" />    
+    <h:outputStylesheet library="css" name="offcanvas.css" />        
+    <h:outputStylesheet library="css" name="estilo.css" />               
+  </h:head>    
+  <body>
+    <!-- Navbar -->
+    <div class="navbar-wrapper">
+      <div class="container">          
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">TO DO LIST</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Inicio</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="configuracoes.html">Configurações</a></li>                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <!-- Carrossel -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">      
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+            <h:graphicImage name="carrossel1.jpg" library="images" alt="First slide"/>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Anote as suas tarefas.</h1>
+              <p>Com a <code>TO DO LIST</code>, você pode anotar e organizar as suas tarefas de forma fácil e rápida. Comece agora mesmo! </p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button" data-toggle="modal" data-target="#loginModal">Entrar</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">            
+            <h:graphicImage name="carrossel2.jpg" library="images" alt="Second slide"/>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Prepare os seus afazeres.</h1>
+              <p>Organize o seu dia. Prepare os seus afazeres antes de começar a por a mão na massa. Deixe a <code>TO DO LIST</code> te ajudar!</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button" data-toggle="modal" data-target="#loginModal">Entrar</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+            <h:graphicImage name="carrossel3.jpg" library="images" alt="Third slide"/>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Organize as suas idéias.</h1>
+              <p>Uma vez que suas tarefas foram salvas, vizualize as mesmas em forma de lista e usando uma série de filtros. O que você está esperando?</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button" data-toggle="modal" data-target="#loginModal">Entrar</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+    
+    <!-- Conteudo -->
+    <div class="container conteudo">
+      
+        <!-- Depoimentos -->
+        <div class="row">
+          <div class="col-lg-4">
+            <h:graphicImage class="img-circle" name="pessoa1.jpg" library="images" alt="Generic placeholder image"/>
+            <h2>Bacana!</h2>
+            <p>Com a <span class="label label-success">TO DO LIST,</span> consigo organizar as minhas atividades com a banda! Organizar as musicas em ordem para os ensaios!</p>          
+          </div>
+          <div class="col-lg-4">
+            <h:graphicImage class="img-circle" name="pessoa2.jpg" library="images" alt="Generic placeholder image"/>
+            <h2>Demais!</h2>	
+            <p>Eu costumava ser um cara desorganizado mas agora minha vida mudou! Consigo preparar as minhas tarefas diárias de forma rápida! Obrigado <span class="label label-success">TO DO LIST!</span></p>         
+          </div>
+          <div class="col-lg-4">
+            <h:graphicImage class="img-circle" name="pessoa3.jpg" library="images" alt="Generic placeholder image"/>
+            <h2>Recomendo!</h2>
+            <p>Com a <span class="label label-success">TO DO LIST,</span> estudar se tornou mais fácil! Consigo organizar as provas e trabalhos e sempre sei a ordem de prioridades!</p>          
+          </div>
+        </div>      
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>  
+            <h2 class="form-signin-heading">Login</h2>
+          </div>
+          <div class="modal-body">
+                          
+              <h:form class="form-signin">
+                  <h:inputText id="userName" class="form-control" value="#{login.userName}" required="true" requiredMessage="Favor preencher o campo Usuário." pt:placeholder="E-mail do Usuário"/>
+                  <h:message for="userName"></h:message>
+                  <h:inputSecret id="password" class="form-control" value="#{login.password}" required="true" requiredMessage="Favor preencher o campo Senha." pt:placeholder="Senha"/>
+                  <h:message for="password"></h:message>
+                  <h:outputLabel class="checkbox">
+                      <h:selectBooleanCheckbox value="lembre-me" /> Lembre-me
+                  </h:outputLabel>
+                  <h:commandButton class="btn btn-lg btn-primary btn-block" value="Entrar" action="#{login.logar}"/>
+              </h:form>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer>
+        <hr class="featurette-divider" />
+        <p class="pull-right"><a href="#">Topo</a></p>
+        <p>&copy; 2014 Company, Inc. &middot;</p>
+    </footer>
+     
+    <!-- Javascript -->       
+    <h:outputScript library="js" name="jquery-1.11.1.min.js" />
+    <h:outputScript library="js" name="teste.js" />
+    <h:outputScript library="js" name="bootstrap.min.js" />
+  </body>
+</html>
