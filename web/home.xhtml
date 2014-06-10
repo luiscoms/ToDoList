@@ -1,53 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Projeto TO DO LIST</title>
 
+	<!-- Styles -->
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<h:outputStylesheet library="css" name="offcanvas.css" />
+	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
 
 <h:body>
-	<h:form id="jsfexample">
-		<p:panelGrid columns="2">
-			<f:facet name="header">  
-				Nova Tarefa  
-		   </f:facet>
-			<h:outputLabel for="data" value="Enter Date" />
-			<p:calendar id="data" value="#{manager.data}" pattern="dd-MM-yyyy" mask="true" />
+	<p:growl id="growl" showDetail="true" sticky="true" />
 
-			<h:outputLabel for="key" value="Enter key" />
-			<p:inputText id="key" value="#{manager.key}" />
+	<!-- Navbar -->
+	<div class="navbar-wrapper">
+	  <div class="container">
+		<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+		  <div class="container">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#">TO DO LIST</a>
+			</div>
+			<div class="navbar-collapse collapse">
+			  <ul class="nav navbar-nav">
+				<li class="active"><a href="index.html">Inicio</a></li>
+				<li><a href="sobre.html">Sobre</a></li>
+				<li><a href="configuracoes.html">Configurações</a></li>
+			  </ul>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
 
-			<h:outputLabel for="value" value="Enter value" />
-			<p:inputText id="value" value="#{manager.value}" required="true" requiredMessage="Ha"/>
-
-			<p:commandButton action="#{manager.save}" update="mydata"
-				value="Save" icon="ui-icon-check" style="margin:0" />
-			<p:commandButton action="#{manager.clear}" update="mydata"
-				value="Delete" icon="ui-icon-cancel" style="margin:0" />
-
-			<h:messages />
 
 
-		</p:panelGrid>
+	<div class="page-wrapper">
 
-		<p:dataTable value="#{manager.cacheList}" var="item" id="mydata"
-			selectionMode="single" selection="#{manager.selectedProp}"
-			rowKey="#{item.key}">
-			<p:column>
-				<f:facet name="header">Data</f:facet>
-				<h:outputText value="#{item.data}" />
-			</p:column>
-			<p:column>
-				<f:facet name="header">Key</f:facet>
-				<h:outputText value="#{item.key}" />
-			</p:column>
-			<p:column>
-				<f:facet name="header">Value</f:facet>
-				<h:outputText value="#{item.value}" />
-			</p:column>
-		</p:dataTable>
-	</h:form>
+		<!-- Conteudo -->
+		<div class="container conteudo">
+			<div class="todopanel row row-offcanvas row-offcanvas-right">
+
+				<!-- Lista -->
+				<div class="col-xs-12 col-sm-9">
+					<p class="pull-right visible-xs">
+						<button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">
+							Toggle nav
+						</button>
+					</p>
+					<div class="jumbotron">
+
+						<div class="row show-grid">
+							<div class="col-md-6"><h2>Minhas Tarefas!</h2></div>
+							<div class="col-md-6">
+								<p:commandButton value="Adicionar" type="button" onclick="PF('taskModal').show();" styleClass="btn btn-success" />
+								<p:commandButton value="Editar" type="button" styleClass="btn btn-info" />
+								<p:commandButton value="Deletar" type="button" styleClass="btn btn-danger" action="#{manager.clear}" update="@(#taskList, #grow1)" />
+							</div>
+						</div>
+
+						<hr class="featurette-divider"/>
+
+						<div class="table-responsive">
+
+							<p:dialog header="Nova Tarefa" widgetVar="taskModal" modal="true">
+
+								<h:form id="taskForm">
+
+									<p:messages id="msgs" />
+
+									<p:panelGrid columns="2">
+										<p:outputLabel for="data" value="Enter Date" />
+										<h:panelGroup>
+											<p:calendar id="data" value="#{manager.data}" pattern="dd-MM-yyyy" mask="true" required="true" />
+											<p:message for="data" display="icon" />
+										</h:panelGroup>
+										<p:outputLabel for="key" value="Enter key" />
+										<h:panelGroup>
+											<p:inputText id="key" value="#{manager.key}" required="true" />
+											<p:message for="key" display="icon" />
+										</h:panelGroup>
+
+										<p:outputLabel for="value" value="Enter value" />
+										<h:panelGroup>
+											<p:inputText id="value" value="#{manager.value}" required="true" requiredMessage="Ha"/>
+											<p:message for="value" display="icon" />
+										</h:panelGroup>
+										<p:commandButton value="Clear" process="@this" update="taskForm">
+											<p:resetInput target="taskForm" />
+										</p:commandButton>
+										<p:commandButton actionListener="#{manager.save}" update="@(#taskForm, #taskList)"
+											value="Save" icon="ui-icon-check" style="margin:0" />
+
+									</p:panelGrid>
+								</h:form>
+							</p:dialog>
+
+							<p:dataTable value="#{manager.cacheList}" var="item" id="taskList"
+								selectionMode="single" selection="#{manager.selectedProp}"
+								rowKey="#{item.key}">
+								<p:column>
+									<f:facet name="header">Data</f:facet>
+									<h:outputText value="#{item.data}" />
+								</p:column>
+								<p:column>
+									<f:facet name="header">Key</f:facet>
+									<h:outputText value="#{item.key}" />
+								</p:column>
+								<p:column>
+									<f:facet name="header">Value</f:facet>
+									<h:outputText value="#{item.value}" />
+								</p:column>
+							</p:dataTable>
+
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Tarefa</th>
+										<th>Configurar</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>Cortar a Grama</td>
+										<td>
+											<button type="button" class="btn btn-xs btn-info">Editar</button>
+											<button type="button" class="btn btn-xs btn-danger">Deletar</button>
+										</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>Lavar o Carro</td>
+										 <td>
+											<button type="button" class="btn btn-xs btn-info">Editar</button>
+											<button type="button" class="btn btn-xs btn-danger">Deletar</button>
+										</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Catar Coquinho</td>
+										<td>
+											<button type="button" class="btn btn-xs btn-info">Editar</button>
+											<button type="button" class="btn btn-xs btn-danger">Deletar</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<!-- Menu lateral -->
+				<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+					<div class="list-group">
+						<a href="#" class="list-group-item active">
+							Tudo
+						</a>
+						<a href="#" class="list-group-item">
+							Hoje
+						</a>
+						<a href="#" class="list-group-item">
+							Próximos 7 dias
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Adicionar Tarefa Modal -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h2 class="form-signin-heading">Nova Tarefa</h2>
+		  </div>
+		  <div class="modal-body">
+
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<!-- FOOTER -->
+	<footer>
+		<hr class="featurette-divider"/>
+		<p class="pull-right"><a href="#">Topo</a></p>
+		<p>&copy; 2014 Company, Inc. &middot;</p>
+	</footer>
+
+	<!-- Javascript -->
+	<h:outputScript library="js" name="bootstrap.min.js" />
 </h:body>
 </html>
