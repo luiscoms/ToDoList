@@ -48,17 +48,16 @@ footer{
 .conteudo {
   padding-right: 15px;
   padding-left: 15px;
-  max-width: 970px;
+  width: 100%;
 }
 
-.conteudo .col-lg-4 {
-  /*margin-bottom: 20px;*/
-  text-align: center;
+.about .col-lg-4 {
+  /*margin-bottom: 20px;*/  
 }
-.conteudo h2 {
+.about h2 {
   font-weight: normal;
 }
-.conteudo .col-lg-4 p {
+.about .col-lg-4 p {
   margin-right: 10px;
   margin-left: 10px;
 }
@@ -66,11 +65,30 @@ footer{
 .featurette-divider {
   margin: 20px 0; 
 }
-
 .page-wrapper{
+  text-align: center;
+}
+.page-wrapper.todolist{
     background: transparent url(../img/totolist.jpg) center no-repeat;
     background-size: cover;    
 }
+.page-wrapper.about{
+  position: relative;
+  background: url(../img/about.jpg) no-repeat 0 50%;
+  color: #3d3d3d;
+  text-align: center; 
+  background-size: cover; 
+}
+
+.todolist .conteudo{
+  max-width: 970px;
+  margin: 0 auto;
+}
+
+.todolist .conteudo .table th{
+  text-align: center;
+}
+
 .todopanel{
     padding-top: 72px;    
 }
@@ -79,8 +97,8 @@ footer{
 }
 
 .todopanel .jumbotron .featurette-divider{
-     border-top: 1px solid #D8D5D5;
-     margin: 20px 0;
+   border-top: 1px solid #D8D5D5;
+   margin: 20px 0;
 }
 
 .featurette-heading {
@@ -130,34 +148,30 @@ footer{
 }
 
 
-
-
-
-
 .inner {
-	width: 940px;
+	max-width: 940px;
 	margin: auto;
 	position: relative;
 }
 
-.conteudo .inner {
+.about .inner {
 	text-align: center;
 	padding: 90px 0 10px;
 	overflow: hidden;
 }
 
-.conteudo .inner.row {
+.about .inner.row {
 	padding: 0;
 }
 
-.conteudo h2+p {
+.about h2+p {
 	margin-bottom: 50px;
 }
 
-.conteudo ul {
+.about ul {
 	text-align: justify;
 }
-.conteudo li {
+.about li {
 	list-style: none;
 	position: relative;
 	width: 33%;
@@ -167,7 +181,7 @@ footer{
 	padding: 0 100px 0 0;
 }
 
-.conteudo li:before {
+.about li:before {
 	content: " ";
 	display: block;
 	position: absolute;
@@ -177,15 +191,15 @@ footer{
 	height: 70px;
 	background: transparent url(../img/icons.png) 0 3px no-repeat;
 }
-.conteudo li.feature1:before {
+.about li.feature1:before {
 	background-position: 0 -900px;
 }
-.conteudo li.feature2:before {
+.about li.feature2:before {
 	background-position: 0 -400px;
 }
-.conteudo li.feature3:before {
+.about li.feature3:before {
 	background-position: 0 -300px;
 }
-.conteudo li.feature4:before {
+.about li.feature4:before {
 	
 }
