@@ -69,7 +69,7 @@
 							<div class="col-md-6">
 								<p:commandButton value="Adicionar" type="button" onclick="PF('taskModal').show();" styleClass="btn btn-success" />
 								<p:commandButton value="Editar" type="button" styleClass="btn btn-info" />
-								<p:commandButton value="Deletar" type="button" styleClass="btn btn-danger" action="#{manager.clear}" update="@(#taskList, #grow1)" />
+								<p:commandButton value="Deletar" type="button" styleClass="btn btn-danger" actionListener="#{manager.clear}" update="@(#taskList, #growl)" />
 							</div>
 						</div>
 
@@ -81,29 +81,24 @@
 
 								<h:form id="taskForm">
 
-									<p:messages id="msgs" />
-
 									<p:panelGrid columns="2">
 										<p:outputLabel for="data" value="Enter Date" />
 										<h:panelGroup>
 											<p:calendar id="data" value="#{manager.data}" pattern="dd-MM-yyyy" mask="true" required="true" />
-											<p:message for="data" display="icon" />
 										</h:panelGroup>
-										<p:outputLabel for="key" value="Enter key" />
+										<p:outputLabel for="key" value="Tarefa" />
 										<h:panelGroup>
 											<p:inputText id="key" value="#{manager.key}" required="true" />
-											<p:message for="key" display="icon" />
 										</h:panelGroup>
 
-										<p:outputLabel for="value" value="Enter value" />
+										<p:outputLabel for="value" value="Descricao" />
 										<h:panelGroup>
-											<p:inputText id="value" value="#{manager.value}" required="true" requiredMessage="Ha"/>
-											<p:message for="value" display="icon" />
+											<p:inputText id="value" value="#{manager.value}" required="true" />
 										</h:panelGroup>
 										<p:commandButton value="Clear" process="@this" update="taskForm">
 											<p:resetInput target="taskForm" />
 										</p:commandButton>
-										<p:commandButton actionListener="#{manager.save}" update="@(#taskForm, #taskList)"
+										<p:commandButton type="submit" actionListener="#{manager.save}" update="@(#taskForm, #taskList, #growl)"
 											value="Save" icon="ui-icon-check" style="margin:0" />
 
 									</p:panelGrid>
@@ -118,50 +113,14 @@
 									<h:outputText value="#{item.data}" />
 								</p:column>
 								<p:column>
-									<f:facet name="header">Key</f:facet>
+									<f:facet name="header">Tarefa</f:facet>
 									<h:outputText value="#{item.key}" />
 								</p:column>
 								<p:column>
-									<f:facet name="header">Value</f:facet>
+									<f:facet name="header">Desc</f:facet>
 									<h:outputText value="#{item.value}" />
 								</p:column>
 							</p:dataTable>
-
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>#</th>
-										<th>Tarefa</th>
-										<th>Configurar</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td>Cortar a Grama</td>
-										<td>
-											<button type="button" class="btn btn-xs btn-info">Editar</button>
-											<button type="button" class="btn btn-xs btn-danger">Deletar</button>
-										</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>Lavar o Carro</td>
-										 <td>
-											<button type="button" class="btn btn-xs btn-info">Editar</button>
-											<button type="button" class="btn btn-xs btn-danger">Deletar</button>
-										</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>Catar Coquinho</td>
-										<td>
-											<button type="button" class="btn btn-xs btn-info">Editar</button>
-											<button type="button" class="btn btn-xs btn-danger">Deletar</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
 						</div>
 					</div>
 				</div>
@@ -182,21 +141,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<!-- Adicionar Tarefa Modal -->
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h2 class="form-signin-heading">Nova Tarefa</h2>
-		  </div>
-		  <div class="modal-body">
-
-		  </div>
-		</div>
-	  </div>
 	</div>
 
 	<!-- FOOTER -->

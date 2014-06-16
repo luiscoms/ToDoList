@@ -48,8 +48,8 @@ public class PropertyManager {
 	}
 
 	public void setSelectedProp(Property selectedProp) {
-		FacesMessage message = new FacesMessage("Task selected");
-		FacesContext.getCurrentInstance().addMessage(null, message);
+//		FacesMessage message = new FacesMessage("Task selected");
+//		FacesContext.getCurrentInstance().addMessage(null, message);
 		this.selectedProp = selectedProp;
 	}
 	public String getKey() {
