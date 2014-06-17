@@ -84,7 +84,9 @@
 									<p:panelGrid columns="2">
 										<p:outputLabel for="data" value="Enter Date" />
 										<h:panelGroup>
-											<p:calendar id="data" value="#{manager.data}" pattern="dd-MM-yyyy" mask="true" required="true" />
+											<p:calendar id="data" value="#{manager.data}" pattern="dd-MM-yyyy" mask="true" required="true">
+												<f:convertDateTime pattern="dd-MM-yyyy" />
+											</p:calendar>
 										</h:panelGroup>
 										<p:outputLabel for="key" value="Tarefa" />
 										<h:panelGroup>
@@ -110,7 +112,9 @@
 								rowKey="#{item.key}">
 								<p:column>
 									<f:facet name="header">Data</f:facet>
-									<h:outputText value="#{item.data}" />
+									<h:outputText value="#{item.data}">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:outputText>
 								</p:column>
 								<p:column>
 									<f:facet name="header">Tarefa</f:facet>
