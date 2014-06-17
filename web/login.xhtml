@@ -4,9 +4,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:p="http://primefaces.org/ui">    
+      xmlns:p="http://primefaces.org/ui">
 
-  <h:head>    
+  <h:head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,14 +15,14 @@
     <title>Projeto TO DO LIST</title>
 
     <!-- Styles -->
-    <h:outputStylesheet library="css" name="bootstrap.css" />    
-    <h:outputStylesheet library="css" name="offcanvas.css" />        
-    <h:outputStylesheet library="css" name="estilo.css" />               
-  </h:head>    
+    <h:outputStylesheet library="css" name="bootstrap.css" />
+    <h:outputStylesheet library="css" name="offcanvas.css" />
+    <h:outputStylesheet library="css" name="estilo.css" />
+  </h:head>
   <body>
     <!-- Navbar -->
     <div class="navbar-wrapper">
-      <div class="container">          
+      <div class="container">
         <div class="navbar navbar-inverse navbar-static-top" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -38,16 +38,16 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="index.html">Inicio</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="configuracoes.html">Configurações</a></li>                
+                <li><a href="configuracoes.html">Configurações</a></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-   
+
     <!-- Carrossel -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">      
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -64,7 +64,7 @@
             </div>
           </div>
         </div>
-        <div class="item">            
+        <div class="item">
             <h:graphicImage name="carrossel2.jpg" library="images" alt="Second slide"/>
           <div class="container">
             <div class="carousel-caption">
@@ -88,28 +88,28 @@
       <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
-    
+
     <!-- Conteudo -->
     <div class="container conteudo">
-      
+
         <!-- Depoimentos -->
         <div class="row">
           <div class="col-lg-4">
             <h:graphicImage class="img-circle" name="pessoa1.jpg" library="images" alt="Generic placeholder image"/>
             <h2>Bacana!</h2>
-            <p>Com a <span class="label label-success">TO DO LIST,</span> consigo organizar as minhas atividades com a banda! Organizar as musicas em ordem para os ensaios!</p>          
+            <p>Com a <span class="label label-success">TO DO LIST,</span> consigo organizar as minhas atividades com a banda! Organizar as musicas em ordem para os ensaios!</p>
           </div>
           <div class="col-lg-4">
             <h:graphicImage class="img-circle" name="pessoa2.jpg" library="images" alt="Generic placeholder image"/>
-            <h2>Demais!</h2>	
-            <p>Eu costumava ser um cara desorganizado mas agora minha vida mudou! Consigo preparar as minhas tarefas diárias de forma rápida! Obrigado <span class="label label-success">TO DO LIST!</span></p>         
+            <h2>Demais!</h2>
+            <p>Eu costumava ser um cara desorganizado mas agora minha vida mudou! Consigo preparar as minhas tarefas diárias de forma rápida! Obrigado <span class="label label-success">TO DO LIST!</span></p>
           </div>
           <div class="col-lg-4">
             <h:graphicImage class="img-circle" name="pessoa3.jpg" library="images" alt="Generic placeholder image"/>
             <h2>Recomendo!</h2>
-            <p>Com a <span class="label label-success">TO DO LIST,</span> estudar se tornou mais fácil! Consigo organizar as provas e trabalhos e sempre sei a ordem de prioridades!</p>          
+            <p>Com a <span class="label label-success">TO DO LIST,</span> estudar se tornou mais fácil! Consigo organizar as provas e trabalhos e sempre sei a ordem de prioridades!</p>
           </div>
-        </div>      
+        </div>
     </div>
 
     <!-- Login Modal -->
@@ -117,35 +117,34 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>  
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h2 class="form-signin-heading">Login</h2>
           </div>
           <div class="modal-body">
-                          
-              <h:form class="form-signin">
+
+              <h:form class="form-signin" id="form-signin">
+                <p:messages showIcon="false"></p:messages>
                   <h:inputText id="userName" class="form-control" value="#{login.userName}" required="true" requiredMessage="Favor preencher o campo Usuário." pt:placeholder="E-mail do Usuário"/>
-                  <h:message for="userName"></h:message>
                   <h:inputSecret id="password" class="form-control" value="#{login.password}" required="true" requiredMessage="Favor preencher o campo Senha." pt:placeholder="Senha"/>
-                  <h:message for="password"></h:message>
                   <h:outputLabel class="checkbox">
                       <h:selectBooleanCheckbox value="lembre-me" /> Lembre-me
                   </h:outputLabel>
-                  <h:commandButton class="btn btn-lg btn-primary btn-block" value="Entrar" action="#{login.logar}"/>
+                  <p:commandButton type="submit" styleClass="btn btn-lg btn-primary btn-block" value="Entrar" action="#{login.logar}" update="form-signin" />
               </h:form>
-              
+
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- FOOTER -->
     <footer>
         <hr class="featurette-divider" />
         <p class="pull-right"><a href="#">Topo</a></p>
         <p>&copy; 2014 Company, Inc. &middot;</p>
     </footer>
-     
-    <!-- Javascript -->       
+
+    <!-- Javascript -->
     <h:outputScript library="js" name="jquery-1.11.1.min.js" />
     <h:outputScript library="js" name="teste.js" />
     <h:outputScript library="js" name="bootstrap.min.js" />
