@@ -10,3 +10,8 @@ indent_style = tab
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
+
+
+[*.xhtml]
+indent_style = spaces
+indent_size = 2
